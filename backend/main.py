@@ -3,18 +3,19 @@ import sqlite3
 from flask_cors import CORS
 import requests
 import datetime
+from flask import request
 
 app = Flask(__name__)
 CORS(app)
 
 
 # gets the AQI number for the last week at the same hour that the user is querying
-@app.route('/data')
-def get_api_data():
+@app.route('/aqi')
+def get_aqi():
     url = 'https://air-quality-api.open-meteo.com/v1/air-quality'
     params = {
-        "latitude": 42.3662,
-        "longitude": 71.0621,
+        "latitude": request.args.get('latitude'),
+        "longitude": request.args.get('longitude'),
         "hourly": ["us_aqi"],
         "past_days": 7,
         "forecast_days": 0
