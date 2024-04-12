@@ -8,7 +8,8 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: '3.10'
-      - run: cd backend
-      - run: python -m pip install --upgrade pip
-      - run: pip install -r requirements.txt
-      - run: python3 -m unittest discover
+      - run: |
+        cd backend
+        python3 -m pip install --upgrade pip
+        pip install -r requirements.txt
+        python3 -m unittest discover
