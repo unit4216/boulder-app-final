@@ -110,7 +110,7 @@ function App() {
                   })}
               </Select>
           </FormControl>
-          <div>
+          <div className='mt-10'>
               The air quality index in &nbsp;
               <span className='font-bold'>{selectedCity.city}</span>
               &nbsp; next hour is predicted to be &nbsp;
