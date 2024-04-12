@@ -8,6 +8,7 @@ app = Flask(__name__)
 CORS(app)
 
 
+# gets the AQI number for the last week at the same hour that the user is querying
 @app.route('/data')
 def get_api_data():
     url = 'https://air-quality-api.open-meteo.com/v1/air-quality'
@@ -28,16 +29,17 @@ def get_api_data():
 
     now = datetime.datetime.now()
     # this gets hour in 24h format (e.g. 16)
-    current_hour = now.hour
+    # we want to get the next hour
+    next_hour = now.hour + 1 if now.hour != 23 else 0
     # filter for current hour (date is in format ISO but missing seconds e.g. `YYYY-MM-DDTHH:MM`
-    filtered_data = [x for x in parsed_data if int(x["time"].split('T')[1].split(':')[0]) == current_hour]
+    filtered_data = [x for x in parsed_data if int(x["time"].split('T')[1].split(':')[0]) == next_hour]
 
     aqi_points = [x['aqi'] for x in filtered_data]
 
-    sum = 0
+    total = 0
     for aqi in aqi_points:
-        sum = sum + aqi
-    average = sum / len(aqi_points)
+        total = total + aqi
+    average = total / len(aqi_points)
 
     return str(average)
 
