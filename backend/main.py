@@ -5,7 +5,7 @@ import requests
 import datetime
 from flask import request
 from aqi import get_past_aqi_data, get_predicted_aqi, get_next_hour, parse_aqi_data
-from database import get_data, store_data
+from database_operations import get_data, store_data
 
 app = Flask(__name__)
 CORS(app)

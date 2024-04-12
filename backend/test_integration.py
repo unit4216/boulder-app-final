@@ -2,7 +2,7 @@ import datetime
 import unittest
 from unittest.mock import Mock
 
-from backend.aqi import get_past_aqi_data, parse_aqi_data, get_predicted_aqi, get_next_hour
+from aqi import get_past_aqi_data, parse_aqi_data, get_predicted_aqi, get_next_hour
 
 
 class TestAqiIntegration(unittest.TestCase):

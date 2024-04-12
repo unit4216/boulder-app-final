@@ -1,7 +1,7 @@
 import datetime
 import unittest
 
-from backend.aqi import get_predicted_aqi, get_next_hour, parse_aqi_data
+from aqi import get_predicted_aqi, get_next_hour, parse_aqi_data
 
 
 class TestAqiUnit(unittest.TestCase):
