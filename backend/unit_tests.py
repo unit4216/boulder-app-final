@@ -4,7 +4,7 @@ import unittest
 from backend.aqi import get_predicted_aqi, get_past_aqi_data, get_next_hour
 
 
-class TestAqi(unittest.TestCase):
+class TestAqiUnit(unittest.TestCase):
 
     def test_get_predicted_aqi(self):
         sample_data = [

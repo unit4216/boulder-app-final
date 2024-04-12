@@ -6,6 +6,15 @@ def get_next_hour(now: datetime):
     return now.hour + 1 if now.hour != 23 else 0
 
 
+def parse_aqi_data(data: dict) -> list[dict]:
+    parsed_data = []
+    for index, hour in enumerate(data['hourly']['time']):
+        aqi = data['hourly']['us_aqi'][index]
+        parsed_data.append({"time": hour, "aqi": aqi})
+
+    return parsed_data
+
+
 def get_past_aqi_data(latitude: str, longitude: str):
     url = 'https://air-quality-api.open-meteo.com/v1/air-quality'
     params = {
@@ -16,14 +25,7 @@ def get_past_aqi_data(latitude: str, longitude: str):
         "forecast_days": 0
     }
     resp = requests.get(url, params=params)
-    data = resp.json()
-
-    parsed_data = []
-    for index, hour in enumerate(data['hourly']['time']):
-        aqi = data['hourly']['us_aqi'][index]
-        parsed_data.append({"time": hour, "aqi": aqi})
-
-    return parsed_data
+    return resp.json()
 
 
 def get_predicted_aqi(parsed_data: list[dict], hour: int):

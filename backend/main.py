@@ -4,7 +4,7 @@ from flask_cors import CORS
 import requests
 import datetime
 from flask import request
-from aqi import get_past_aqi_data, get_predicted_aqi, get_next_hour
+from aqi import get_past_aqi_data, get_predicted_aqi, get_next_hour, parse_aqi_data
 
 app = Flask(__name__)
 CORS(app)
@@ -15,7 +15,8 @@ CORS(app)
 def get_aqi():
     latitude = request.args.get('latitude')
     longitude = request.args.get('longitude')
-    parsed_data = get_past_aqi_data(latitude, longitude)
+    data = get_past_aqi_data(latitude, longitude)
+    parsed_data = parse_aqi_data(data)
     now = datetime.datetime.now()
     next_hour = get_next_hour(now)
     return get_predicted_aqi(parsed_data, next_hour)
