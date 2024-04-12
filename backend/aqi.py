@@ -2,6 +2,10 @@ import requests
 import datetime
 
 
+def get_next_hour(now: datetime):
+    return now.hour + 1 if now.hour != 23 else 0
+
+
 def get_past_aqi_data(latitude: str, longitude: str):
     url = 'https://air-quality-api.open-meteo.com/v1/air-quality'
     params = {
@@ -22,13 +26,10 @@ def get_past_aqi_data(latitude: str, longitude: str):
     return parsed_data
 
 
-def get_predicted_aqi(parsed_data: list[dict]):
-    now = datetime.datetime.now()
-    # this gets hour in 24h format (e.g. 16)
-    # we want to get the next hour
-    next_hour = now.hour + 1 if now.hour != 23 else 0
+def get_predicted_aqi(parsed_data: list[dict], hour: int):
+
     # filter for current hour (date is in format ISO but missing seconds e.g. `YYYY-MM-DDTHH:MM`
-    filtered_data = [x for x in parsed_data if int(x["time"].split('T')[1].split(':')[0]) == next_hour]
+    filtered_data = [x for x in parsed_data if int(x["time"].split('T')[1].split(':')[0]) == hour]
 
     aqi_points = [x['aqi'] for x in filtered_data]
 
