@@ -9,7 +9,7 @@ jobs:
         with:
           python-version: '3.10'
       - run: |
-        cd backend
-        python3 -m pip install --upgrade pip
-        pip install -r requirements.txt
-        python3 -m unittest discover
+          cd backend
+          python3 -m pip install --upgrade pip
+          pip install -r requirements.txt
+          python3 -m unittest discover
