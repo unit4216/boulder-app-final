@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
-import {getAirQualityIndex, getMetrics, getPastPredictions} from "./endpoints";
+import {getAirQualityIndex, getPastPredictions} from "./endpoints";
 import {Box, FormControl, InputLabel, MenuItem, Select} from "@mui/material";
 import {DataGrid, GridColDef} from "@mui/x-data-grid";
 import {Monitoring} from "./Monitoring";
