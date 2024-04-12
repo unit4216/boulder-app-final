@@ -15,6 +15,7 @@ class TestAqi(unittest.TestCase):
             {"time": "2022-01-01T11:00", "aqi": 10},
             {"time": "2022-01-01T11:00", "aqi": 12},
             {"time": "2022-01-01T11:00", "aqi": 12},
+            {"time": "2022-01-01T14:00", "aqi": 900},
         ]
         hour = 11
         results = get_predicted_aqi(sample_data, hour)
