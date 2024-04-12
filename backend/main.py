@@ -1,7 +1,9 @@
 from flask import Flask
 import sqlite3
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 
 @app.route('/')
@@ -11,7 +13,7 @@ def get_data():
     cur = con.cursor()
 
     cur.execute('CREATE TABLE IF NOT EXISTS weather(day TEXT, temperature TEXT)')
-    cur.execute(f'INSERT INTO waether VALUES ("TEST day", "92")')
+    cur.execute(f'INSERT INTO weather VALUES ("TEST day", "92")')
     con.commit()
 
     # read the data we just wrote
