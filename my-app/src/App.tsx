@@ -3,7 +3,7 @@ import './App.css';
 import {getAirQualityIndex, getPastPredictions} from "./endpoints";
 import {Box, FormControl, InputLabel, MenuItem, Select} from "@mui/material";
 import {DataGrid, GridColDef} from "@mui/x-data-grid";
-import {Monitoring} from "./Monitoring";
+import { Monitoring } from "./Monitoring";
 
 export interface City {
     city: string,
