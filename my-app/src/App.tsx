@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
-import {getAirQualityIndex, getPastPredictions} from "./endpoints";
+import {getAirQualityIndex, getMetrics, getPastPredictions} from "./endpoints";
 import {Box, FormControl, InputLabel, MenuItem, Select} from "@mui/material";
 import {DataGrid, GridColDef} from "@mui/x-data-grid";
+import {Monitoring} from "./Monitoring";
 
-interface City {
+export interface City {
     city: string,
     latitude: number,
     longitude: number
@@ -129,6 +130,7 @@ function App() {
                   getRowId={() => Math.random()}
               />
           </Box>
+          <Monitoring selectedCity={selectedCity}/>
       </header>
     </div>
   );

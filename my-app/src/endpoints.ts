@@ -13,3 +13,16 @@ export const getPastPredictions = async () => {
     const res = await axios.get(url)
     return res.data
 }
+
+export const getMetrics = async () => {
+    const url = `${baseUrl}/metrics`
+    const res = await axios.get(url)
+    return res.data
+}
+
+export const getServerHealth = async () => {
+    const url = `${baseUrl}/health`
+    const res = await axios.get(url)
+    console.log(res)
+    return res.data === 200
+}
