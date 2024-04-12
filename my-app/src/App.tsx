@@ -1,9 +1,17 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 import {TextField} from "@mui/material";
+import {getBackend} from "./endpoints";
 
 function App() {
     const [textInput, setTextInput] = useState<string>('')
+    const [data, setData] = useState<string>('')
+
+    useEffect(()=>{
+        getBackend()
+            .then(res=>setData(res))
+            .catch(err=>console.error(err))
+    },[])
 
   return (
     <div className="App">
@@ -21,6 +29,8 @@ function App() {
           {textInput && (
               <div className='mt-10'>Hello, <span className='text-orange-500'>{textInput}</span>!</div>
           )}
+          <div>Data from database:</div>
+          <div>{data}</div>
       </header>
     </div>
   );
