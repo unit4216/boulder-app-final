@@ -13,7 +13,6 @@ class TestAqiIntegration(unittest.TestCase):
         now = datetime.datetime.now()
         next_hour = get_next_hour(now)
         predicted_aqi = get_predicted_aqi(parsed_data, next_hour)
-        print(predicted_aqi)
         # we can't test the exact AQI since the API call gets the last 7 days from the current day,
         # but we can verify that the predicted AQI is in a valid range
         assert 0 < float(predicted_aqi) < 500
