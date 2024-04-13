@@ -32,7 +32,8 @@ jobs:
             sudo systemctl restart nginx
             cd ..
             cd api
-            kill $(jobs -p)
+            PID=$(lsof -t -i :5000)
+            kill $PID
             python3 main.py &
             
 
