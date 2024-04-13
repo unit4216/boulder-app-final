@@ -20,9 +20,9 @@ jobs:
       - uses: actions/checkout@v4
         with:
           host: ${{ secrets.AQI_IP }}
-          username: ec2-user
+          username: 'ec2-user'
           key: ${{ secrets.EC2_SSH_KEY_AQI }}
-          port: 22
+          port: '22'
           script: |
             whoami
             
