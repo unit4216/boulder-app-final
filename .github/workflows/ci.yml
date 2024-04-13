@@ -17,7 +17,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: appleboy/ssh-action@v1.0.3
-      - uses: actions/checkout@v4
         with:
           host: ${{ secrets.AQI_IP }}
           username: 'ec2-user'
