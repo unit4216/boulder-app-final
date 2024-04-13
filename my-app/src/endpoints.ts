@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = 'http://localhost:5000'
+const baseUrl = 'http://54.203.179.172:5000'
 
 export const getAirQualityIndex = async (latitude: number, longitude: number) => {
     const url = `${baseUrl}/aqi?latitude=${latitude}&longitude=${longitude}`
