@@ -25,6 +25,15 @@ jobs:
           script: |
             whoami
             pwd
+            cd air-quality-app
+            git pull
+            cd my-app
+            sudo cp -r  build/* /usr/share/nginx/html/
+            sudo systemctl restart nginx
+            cd ..
+            cd api
+            kill $(jobs -p)
+            python3 main.py &
             
 
 
